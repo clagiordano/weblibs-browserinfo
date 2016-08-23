@@ -31,13 +31,18 @@ class BrowserInfoTest extends \PHPUnit_Framework_TestCase
 
     public function testgetBrowserInfo()
     {
-        $this->assertFalse($this->browserInfo->identificationStatus());
-        $this->browserInfo->printR();
+        $this->assertFalse(
+            $this->browserInfo->identificationStatus()
+        );
+
         $this->assertInstanceOf(
             'clagiordano\weblibs\browserinfo\BrowserInfo',
             $this->browserInfo->getBrowserInfo()
         );
 
+        ob_start();
+        $this->browserInfo->printR();
+        ob_end_clean();
     }
 
     public function testgetBrowserInfoForceUserAgent()
