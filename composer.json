@@ -1,6 +1,6 @@
 {
     "name": "clagiordano/weblibs-browserinfo",
-    "description": "weblibs-browserinfo is a tool library for easily identify user agent by regurlar expresison or php browscap backend",
+    "description": "weblibs-browserinfo is a tool library for easily identify user agent by regular expresison or php browscap backend",
     "type": "library",
     "license": "LGPL-3.0",
     "autoload": {
