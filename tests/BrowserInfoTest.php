@@ -88,11 +88,55 @@ class BrowserInfoTest extends \PHPUnit_Framework_TestCase
         }
 
 //        var_dump($notMatched);
+//
+//        $this->assertEquals(
+//            0,
+//            $failed,
+//            "Failed identifications {$failed} / {$tested}"
+//        );
+    }
+
+    public function testIdentifyTarget()
+    {
+        $targetString = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36";
+
+        $this->browserInfo->setUserAgentString($targetString);
+        $bInfo = $this->browserInfo->getBrowserInfo();
+
+        $this->assertInstanceOf(
+            'clagiordano\weblibs\browserinfo\BrowserInfo',
+            $bInfo
+        );
+
+        $this->assertTrue(
+            $this->browserInfo->identificationStatus()
+        );
 
         $this->assertEquals(
-            0,
-            $failed,
-            "Failed identifications {$failed} / {$tested}"
+            $targetString,
+            $this->browserInfo->getUserAgentString()
         );
+
+        $this->assertEquals(
+            'Linux',
+            $this->browserInfo->Platform
+        );
+
+        $this->assertEquals(
+            '64bit',
+            $this->browserInfo->Architecture
+        );
+
+        $this->assertEquals(
+            'Google Chrome',
+            $this->browserInfo->Browser
+        );
+
+        $this->assertEquals(
+            '51.0.2704.79',
+            $this->browserInfo->Version
+        );
+
+
     }
 }
