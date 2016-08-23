@@ -179,7 +179,7 @@ class BrowserInfo
         /**
          * check if we have a number
          */
-        if ($version == null || $version == "") {
+        if (is_null($version) || $version === "") {
             $version = "Unknown";
         }
 
