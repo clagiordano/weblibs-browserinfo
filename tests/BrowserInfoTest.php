@@ -136,7 +136,21 @@ class BrowserInfoTest extends \PHPUnit_Framework_TestCase
             '51.0.2704.79',
             $this->browserInfo->Version
         );
+    }
 
-
+    /**
+     * @group custom
+     */
+    public function testCustomDetection()
+    {
+        $this->browserInfo->setUserAgentString(
+            'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8B117 Safari/6531.22.7 (compatible; Googlebot-Mobile/2.1;'
+        );
+        $this->browserInfo->getBrowserInfo();
+        $this->browserInfo->printR();
+//        $this->assertEquals(
+//            'iPhone',
+//            $this->browserInfo->Platform
+//        );
     }
 }

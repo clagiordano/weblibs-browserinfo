@@ -86,6 +86,8 @@ class BrowserInfo
     }
 
     /**
+     * Detect and returns user agent platform
+     *
      * @return string
      */
     private function detectPlatform()
@@ -94,6 +96,10 @@ class BrowserInfo
 
         if (preg_match('/linux/i', $this->userAgentString)) {
             $platform = 'Linux';
+        } elseif (preg_match('/ipad/i', $this->userAgentString)) {
+            $platform = 'iPad';
+        } elseif (preg_match('/iphone/i', $this->userAgentString)) {
+            $platform = 'iPhone';
         } elseif (preg_match('/macintosh|mac os x/i', $this->userAgentString)) {
             $platform = 'Mac';
         } elseif (preg_match('/windows|win32/i', $this->userAgentString)) {
