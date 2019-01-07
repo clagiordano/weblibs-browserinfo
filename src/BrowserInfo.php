@@ -76,10 +76,9 @@ class BrowserInfo
          * Common methods for both cases
          */
         $this->Architecture = $this->detectArchitecture();
-        $this->RemoteAddress = filter_input(
-            INPUT_SERVER,
-            'REMOTE_ADDR',
-            FILTER_VALIDATE_IP
+        $this->RemoteAddress = (filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR')
+            ? filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR')
+            : filter_input(INPUT_SERVER, 'REMOTE_ADDR')
         );
 
         return $this;
